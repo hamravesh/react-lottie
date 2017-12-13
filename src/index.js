@@ -9,7 +9,8 @@ export default class Lottie extends React.Component {
         loop,
         autoplay,
         animationData,
-        rendererSettings
+        rendererSettings,
+        path,
       },
       eventListeners,
     } = this.props;
@@ -19,7 +20,7 @@ export default class Lottie extends React.Component {
       renderer: 'svg',
       loop: loop !== false,
       autoplay: autoplay !== false,
-      animationData,
+      path: animationData,
       rendererSettings,
     };
 
@@ -28,6 +29,7 @@ export default class Lottie extends React.Component {
   }
 
   componentWillUpdate(nextProps /* , nextState */) {
+    return false;
     /* Recreate the animation handle if the data is changed */
     if (this.options.animationData !== nextProps.options.animationData) {
       this.deRegisterEvents(this.props.eventListeners);
